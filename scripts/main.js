@@ -32,6 +32,8 @@ function FriendlyChat() {
 	this.signInButton = document.getElementById('sign-in');
 	this.signOutButton = document.getElementById('sign-out');
 	this.signInSnackbar = document.getElementById('must-signin-snackbar');
+	
+	console.log(document);
 
 	// Saves message on form submit.
 	this.messageForm.addEventListener('submit', this.saveMessage.bind(this));
@@ -273,8 +275,4 @@ FriendlyChat.prototype.checkSetup = function() {
 				'Make sure you go through the codelab setup instructions and make ' +
 				'sure you are running the codelab using `firebase serve`');
 	}
-};
-
-window.onload = function() {
-	window.friendlyChat = new FriendlyChat();
 };
