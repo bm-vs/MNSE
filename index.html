@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>O Informador</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width = 1050, user-scalable = no" />
+	<script type="text/javascript" src="./lib/jquery.min.1.7.js"></script>
+	<script type="text/javascript" src="./lib/modernizr.2.5.3.min.js"></script>
+	<script type="text/javascript" src="./lib/hash.js"></script>
+</head>
+<body>
+	<div id="canvas">
+
+	<div class="magazine-viewport">
+		<div class="container">
+			<div class="magazine" />
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function loadApp() {
+ 	$('#canvas').fadeIn(1000);
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+	flipbook.turn({
+			width: 922,
+			height: 600,
+			duration: 1000,
+			acceleration: !isChrome(),
+			gradients: true,
+			autoCenter: true,
+			elevation: 50,
+			pages: 12,
+
+			// Events
+			when: {
+				turning: function(event, page, view) {
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+			
+					// Update the current URI
+					Hash.go('page/' + page).update();
+				},
+
+				turned: function(event, page, view) {
+					$(this).turn('center');
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+				},
+
+				missing: function (event, pages) {
+					// Add pages that aren't in the magazine
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+				}
+			}
+
+	});
+
+	// Using arrow keys to turn the page
+	$(document).keydown(function(e){
+		var previous = 37, next = 39, esc = 27;
+		switch (e.keyCode) {
+			case previous:
+				// left arrow
+				$('.magazine').turn('previous');
+				e.preventDefault();
+			break;
+			case next:
+				//right arrow
+				$('.magazine').turn('next');
+				e.preventDefault();
+			break;
+			case esc:
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+			}
+		},
+		nop: function(path) {
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	resizeViewport();
+	$('.magazine').addClass('animated');
+}
+
+ $('#canvas').hide();
+
+
+// Load the HTML4 version if there's not CSS transform
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['./lib/turn.js'],
+	nope: ['./lib/turn.html4.min.js'],
+	both: ['js/magazine.js', 'css/magazine.css'],
+	complete: loadApp
+});
+</script>
+
+</body>
+</html>
