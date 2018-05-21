@@ -1,0 +1,40 @@
+[debug] [2018-05-21T15:02:58.255Z] ----------------------------------------------------------------------
+[debug] [2018-05-21T15:02:58.255Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\bruno\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-05-21T15:02:58.255Z] CLI Version:   3.18.4
+[debug] [2018-05-21T15:02:58.255Z] Platform:      win32
+[debug] [2018-05-21T15:02:58.255Z] Node Version:  v8.11.1
+[debug] [2018-05-21T15:02:58.255Z] Time:          Mon May 21 2018 16:02:58 GMT+0100 (GMT Daylight Time)
+[debug] [2018-05-21T15:02:58.255Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-21T15:02:58.270Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-21T15:02:58.270Z] > authorizing via signed-in user
+[debug] [2018-05-21T15:02:58.270Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/theinformer-mnse  
+  
+ Mon May 21 2018 16:02:58 GMT+0100 (GMT Daylight Time)
+[debug] [2018-05-21T15:02:59.270Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-21T15:02:59.270Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/theinformer-mnse/tokens  
+  
+ Mon May 21 2018 16:02:59 GMT+0100 (GMT Daylight Time)
+[debug] [2018-05-21T15:03:00.130Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-21T15:03:00.130Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/theinformer-mnse  
+  
+ Mon May 21 2018 16:03:00 GMT+0100 (GMT Daylight Time)
+[debug] [2018-05-21T15:03:01.005Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\bruno\Documents\MNSE\chat'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-05-21T15:03:02.518Z] Fetching environment
+[debug] [2018-05-21T15:03:02.518Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/28098850877:getServerAppConfig  
+  
+ Mon May 21 2018 16:03:02 GMT+0100 (GMT Daylight Time)
+[debug] [2018-05-21T15:03:02.534Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/28098850877/clients/_:getWebAppConfig  
+  
+ Mon May 21 2018 16:03:02 GMT+0100 (GMT Daylight Time)
+[debug] [2018-05-21T15:03:03.096Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-05-21T15:03:03.143Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-21T15:03:03.143Z] Starting @google-cloud/functions-emulator
+[debug] [2018-05-21T15:03:07.030Z] Parsing function triggers
