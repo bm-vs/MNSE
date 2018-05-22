@@ -10,7 +10,7 @@ const textToSpeech = new TextToSpeechV1({
 });
 
 exports.hello = functions.https.onRequest((req, res) => {
-	return res.status(200).send('hello');	
+	res.status(200).send('hello');	
 });
 
 exports.tts = functions.https.onRequest((req, res) => {
@@ -21,6 +21,6 @@ exports.tts = functions.https.onRequest((req, res) => {
 	}
 	
 	textToSpeech.synthesize(params, function(err, audio) {
-		return res.status(200).send(audio);
+		res.status(200).send(audio);
 	});
 });
