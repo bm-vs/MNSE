@@ -18,15 +18,16 @@ function addPage(page, book) {
 
 function loadPage(page, pageElement) {
 	if (page === 1) {
-		$(pageElement).load('./pages/chat.html', function() {
-			window.friendlyChat = new FriendlyChat();
-		});
+		
 	}
 	else if (page % 2 === 0) {
 		$(pageElement).load('./pages/page' + page + '.html');
 	}
 	else {
-		
+		$(pageElement).load('./pages/chat.html', function() {
+			$(this).children('.chat-container').attr('ref', 'chat-id-' + page);
+			new Chat($(this).children('.chat-container'));
+		});
 	}
 	pageElement.find('.loader').remove();
 }
