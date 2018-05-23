@@ -12,9 +12,10 @@
 
 
 
-h1{
+h2{
     text-align: center;
-    text-decoration: overline;
+    text-transform: uppercase;
+
 }
 
 p{
