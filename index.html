@@ -43,10 +43,12 @@
 <script type="text/javascript">
 
 // Play background sound
-var background_audio = new Audio('./audio/background-audio.mp3');
-background_audio.volume = 0.05;
-background_audio.loop = true;
-background_audio.play();
+$(document).ready(function() {
+	var background_audio = new Audio('./audio/background-audio.mp3');
+	background_audio.volume = 0.05;
+	background_audio.loop = true;
+	background_audio.play();
+});
 
 // Zoom events
 var element_zoomed = null;

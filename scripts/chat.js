@@ -115,7 +115,7 @@ Chat.prototype.saveMessage = function(e) {
 			var currentUser = this.auth.currentUser;
 			$(this.messageInput).val('');
 			this.toggleButton();
-			$.get('http://localhost:3030', {text: content}).done(function(audio) {
+			$.get('https://us-central1-theinformer-mnse.cloudfunctions.net/tts', {text: content}).done(function(audio) {
 				this.chatRef.push({
 					name: currentUser.displayName,
 					text: content,
