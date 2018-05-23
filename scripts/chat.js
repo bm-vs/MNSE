@@ -74,7 +74,7 @@ Chat.prototype.loadMessages = function() {
 
 	var setMessage = function(data) {
 		var val = data.val();
-		this.displayMessage(data.key, val.name, val.text, val.photoUrl);
+		this.displayMessage(data.key, val.name, val.text, val.photoUrl, val.soundUrl);
 	}.bind(this);
 	
 	this.chatRef.limitToLast(12).on('child_added', setMessage);
@@ -82,31 +82,25 @@ Chat.prototype.loadMessages = function() {
 };
 
 // Displays message
-Chat.prototype.displayMessage = function(key, name, text, picUrl) {
-	var div = $('#'+key);
-	if (!div.length) {
-		$(this.messageList).append(this.createMessageElement(key));
-		div = $('#'+key);
-		console.log($(this.messageList).children());
+Chat.prototype.displayMessage = function(key, name, text, picUrl, soundUrl) {
+	var id = '#'+key;	
+	if (!$(id).length) {
+		$(this.messageList).append(
+			'<div class="message-container" id="' + key + '">' +
+				//'<image src="' + picUrl + '">' +
+				'<div class="message">' + text + '</div>' +
+				'<div class="name">' + name + '</div>' +
+				'<audio src="' + soundUrl + '">' +
+			'</div>'
+		);
 	}
-	if (picUrl) {
-		$(div).children('.pic').css('background-image', 'url(' + picUrl + ')');
+	else {
+		this.storage.refFromURL(soundUrl).getMetadata().then(function(metadata) {
+			soundUrl = metadata.downloadURLs[0];
+			$(id).append('<audio autoplay="true" src="' + soundUrl + '">');
+		}.bind(this));
 	}
-	$(div).children('.name').text(name);
-	$(div).children('.message').text(text);
 };
-
-// Creates message element
-Chat.prototype.createMessageElement = function(id) {
-	var elem =
-		'<div class="message-container" id="' + id + '">'+
-			'<div class="pic"></div>'+
-			'<div class="message"></div>'+
-			'<div class="name"></div>'+
-		'</div>';
-	
-	return elem;
-}		
 
 // Saves message to Firebase DB
 Chat.prototype.saveMessage = function(e) {
@@ -115,16 +109,32 @@ Chat.prototype.saveMessage = function(e) {
 		var content = $(this.messageInput).val();
 		if (content) {
 			var currentUser = this.auth.currentUser;
-			this.chatRef.push({
-				name: currentUser.displayName,
-				text: content,
-				photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
-			}).then(function() {
-				$(this.messageInput).val('');
-				this.toggleButton();
-			}.bind(this)).catch(function(error) {
-				console.error('Error writing new message to Firebase Database', error);
-			});
+			$(this.messageInput).val('');
+			this.toggleButton();
+			$.get('http://localhost:3030', {text: content}).done(function(audio) {
+				this.chatRef.push({
+					name: currentUser.displayName,
+					text: content,
+					photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
+				}).then(function(data) {
+					var filePath = currentUser.uid + '/' + data.key + '/audio.wav';
+					var binary = atob(audio.replace(/\s/g, ''));
+					var len = binary.length;
+					var buffer = new ArrayBuffer(len);
+					var view = new Uint8Array(buffer);
+					for (var i = 0; i < len; i++) {
+						view[i] = binary.charCodeAt(i);
+					}
+					
+					audio = new Blob([view], { type: 'audio/wav' });
+					return this.storage.ref(filePath).put(audio).then(function(snapshot) {
+						var fullPath = snapshot.metadata.fullPath;
+						return data.update({soundUrl: this.storage.ref(fullPath).toString()});
+					}.bind(this));
+				}.bind(this)).catch(function(error) {
+					console.error('Error writing new message to Firebase Database', error);
+				});
+			}.bind(this));
 		}
 	}
 	else {

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "theinformer": "theinformer-mnse"
+    "theinformer": "theinformer-mnse",
+    "default": "theinformer-mnse"
   }
 }
