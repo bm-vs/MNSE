@@ -85,8 +85,9 @@ Chat.prototype.loadMessages = function() {
 Chat.prototype.displayMessage = function(key, name, text, picUrl, soundUrl) {
 	var id = '#'+key;	
 	if (!$(id).length) {
+		var hidden = soundUrl ? '' : 'hidden';
 		$(this.messageList).append(
-			'<div class="message-container" id="' + key + '">' +
+			'<div class="message-container" id="' + key + '"' + hidden + '>' +
 				//'<image src="' + picUrl + '">' +
 				'<div class="message">' + text + '</div>' +
 				'<div class="name">' + name + '</div>' +
@@ -98,6 +99,7 @@ Chat.prototype.displayMessage = function(key, name, text, picUrl, soundUrl) {
 		this.storage.refFromURL(soundUrl).getMetadata().then(function(metadata) {
 			soundUrl = metadata.downloadURLs[0];
 			$(id).append('<audio autoplay="true" src="' + soundUrl + '">');
+			$(id).removeAttr('hidden');
 		}.bind(this));
 	}
 };
