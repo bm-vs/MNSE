@@ -39,6 +39,7 @@
 <script src="/__/firebase/4.1.3/firebase.js"></script>
 <script src="/__/firebase/init.js"></script>
 <script src="scripts/chat.js"></script>
+<script type="text/javascript" src="./lib/zoom.js"></script>
 <script type="text/javascript">
 function loadApp() {
  	$('#canvas').fadeIn(1000);
@@ -52,40 +53,39 @@ function loadApp() {
 	
 	// Create the flipbook
 	flipbook.turn({
-			width: 922,
-			height: 600,
-			duration: 1000,
-			acceleration: !isChrome(),
-			gradients: true,
-			autoCenter: true,
-			elevation: 50,
-			pages: 12,
+		width: 922,
+		height: 600,
+		duration: 1000,
+		acceleration: !isChrome(),
+		gradients: true,
+		autoCenter: true,
+		elevation: 50,
+		pages: 12,
 
-			// Events
-			when: {
-				turning: function(event, page, view) {
-					var book = $(this),
-					currentPage = book.turn('page'),
-					pages = book.turn('pages');
-			
-					// Update the current URI
-					Hash.go('page/' + page).update();
-				},
+		// Events
+		when: {
+			turning: function(event, page, view) {
+				var book = $(this),
+				currentPage = book.turn('page'),
+				pages = book.turn('pages');
+		
+				// Update the current URI
+				Hash.go('page/' + page).update();
+			},
 
-				turned: function(event, page, view) {
-					$(this).turn('center');
-					if (page==1) { 
-						$(this).turn('peel', 'br');
-					}
-				},
-
-				missing: function (event, pages) {
-					// Add pages that aren't in the magazine
-					for (var i = 0; i < pages.length; i++)
-						addPage(pages[i], $(this));
+			turned: function(event, page, view) {
+				$(this).turn('center');
+				if (page==1) { 
+					$(this).turn('peel', 'br');
 				}
-			}
+			},
 
+			missing: function (event, pages) {
+				// Add pages that aren't in the magazine
+				for (var i = 0; i < pages.length; i++)
+					addPage(pages[i], $(this));
+			}
+		}
 	});
 
 	// Using arrow keys to turn the page
@@ -135,6 +135,28 @@ function loadApp() {
 }
 
 $('#canvas').hide();
+
+var element_zoomed = null;
+$(document).on('click', function(e) {
+	if (element_zoomed !== null) {
+		zoom.reset();
+		$(element_zoomed).css('cursor', 'zoom-in');
+		$('html').css('cursor', 'default');
+		element_zoomed = null;
+	}
+	else {
+		element = $(e.target).closest('.zoomable');
+		if (element.length) {
+			element_zoomed = element;
+			zoom.to({
+				element: element_zoomed.get(0),
+				pan: false
+			});
+			$(element_zoomed).css('cursor', 'zoom-out');
+			$('html').css('cursor', 'zoom-out');
+		}
+	}
+});
 
 // Load the HTML4 version if there's not CSS transform
 yepnope({
