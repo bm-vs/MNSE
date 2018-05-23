@@ -26,6 +26,8 @@ function loadPage(page, pageElement) {
 	else {
 		$(pageElement).load('./pages/chat.html', function() {
 			$(this).children('.chat-container').attr('ref', 'chat-id-' + page);
+			$(this).children('.chat-container').attr('page-left', page-1);
+			$(this).children('.chat-container').attr('page-right', page);
 			new Chat($(this).children('.chat-container'));
 		});
 	}

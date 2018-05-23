@@ -6,6 +6,8 @@ function Chat(container) {
 
 	// ID
 	this.id = $(container).attr('ref');
+	this.pageLeft = $(container).attr('page-left');
+	this.pageRight = $(container).attr('page-right');
 	
 	// Elements
 	this.messageList = $(container).children('.message-list');
@@ -83,20 +85,20 @@ Chat.prototype.loadMessages = function() {
 
 // Displays message
 Chat.prototype.displayMessage = function(key, name, text, picUrl, soundUrl) {
-	var id = '#'+key;	
+	var id = '#'+key;
+	var url = window.location.href.split('/');
 	if (!$(id).length) {
 		var hidden = soundUrl ? '' : 'hidden';
 		$(this.messageList).append(
 			'<div class="message-container" id="' + key + '"' + hidden + '>' +
-				//'<image src="' + picUrl + '">' +
 				'<div class="message">' + text + '</div>' +
 				'<div class="name">' + name + '</div>' +
-				'<audio src="' + soundUrl + '">' +
 			'</div>'
 		);
 	}
-	else {
+	else if (url[url.length-1] == this.pageLeft || url[url.length-1] == this.pageRight) {
 		this.storage.refFromURL(soundUrl).getMetadata().then(function(metadata) {
+			
 			soundUrl = metadata.downloadURLs[0];
 			$(id).append('<audio autoplay="true" src="' + soundUrl + '">');
 			$(id).removeAttr('hidden');

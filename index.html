@@ -41,11 +41,39 @@
 <script src="scripts/chat.js"></script>
 <script type="text/javascript" src="./lib/zoom.js"></script>
 <script type="text/javascript">
+
+// Play background sound
 var background_audio = new Audio('./audio/background-audio.mp3');
 background_audio.volume = 0.05;
 background_audio.loop = true;
 background_audio.play();
 
+// Zoom events
+var element_zoomed = null;
+$(document).on('click', function(e) {
+	if (element_zoomed !== null) {
+		zoom.reset();
+		$(element_zoomed).css('cursor', 'zoom-in');
+		$('html').css('cursor', 'default');
+		element_zoomed = null;
+	}
+	else {
+		element = $(e.target).closest('.zoomable');
+		if (element.length) {
+			element_zoomed = element;
+			zoom.to({
+				element: element_zoomed.get(0),
+				pan: false
+			});
+			$(element_zoomed).css('cursor', 'zoom-out');
+			$('html').css('cursor', 'zoom-out');
+		}
+	}
+});
+
+// Page flip events
+
+// Load magazine
 function loadApp() {
  	$('#canvas').fadeIn(1000);
  	var flipbook = $('.magazine');
@@ -57,7 +85,6 @@ function loadApp() {
 	}
 	
 	// Create the flipbook
-	
 	flipbook.turn({
 		width: 922,
 		height: 600,
@@ -75,6 +102,7 @@ function loadApp() {
 				currentPage = book.turn('page'),
 				pages = book.turn('pages');
 				
+				// Play page flip sound
 				var page_flip_sound = new Audio('./audio/page-flip-sound.wav');
 				page_flip_sound.volume = 0.2;
 				page_flip_sound.play();
@@ -145,28 +173,6 @@ function loadApp() {
 }
 
 $('#canvas').hide();
-
-var element_zoomed = null;
-$(document).on('click', function(e) {
-	if (element_zoomed !== null) {
-		zoom.reset();
-		$(element_zoomed).css('cursor', 'zoom-in');
-		$('html').css('cursor', 'default');
-		element_zoomed = null;
-	}
-	else {
-		element = $(e.target).closest('.zoomable');
-		if (element.length) {
-			element_zoomed = element;
-			zoom.to({
-				element: element_zoomed.get(0),
-				pan: false
-			});
-			$(element_zoomed).css('cursor', 'zoom-out');
-			$('html').css('cursor', 'zoom-out');
-		}
-	}
-});
 
 // Load the HTML4 version if there's not CSS transform
 yepnope({
