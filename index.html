@@ -41,6 +41,11 @@
 <script src="scripts/chat.js"></script>
 <script type="text/javascript" src="./lib/zoom.js"></script>
 <script type="text/javascript">
+var background_audio = new Audio('./audio/background-audio.mp3');
+background_audio.volume = 0.05;
+background_audio.loop = true;
+background_audio.play();
+
 function loadApp() {
  	$('#canvas').fadeIn(1000);
  	var flipbook = $('.magazine');
@@ -52,6 +57,7 @@ function loadApp() {
 	}
 	
 	// Create the flipbook
+	
 	flipbook.turn({
 		width: 922,
 		height: 600,
@@ -68,6 +74,10 @@ function loadApp() {
 				var book = $(this),
 				currentPage = book.turn('page'),
 				pages = book.turn('pages');
+				
+				var page_flip_sound = new Audio('./audio/page-flip-sound.wav');
+				page_flip_sound.volume = 0.2;
+				page_flip_sound.play();
 		
 				// Update the current URI
 				Hash.go('page/' + page).update();
