@@ -1,42 +1,74 @@
-.news {
-    width:90%; 
-    overflow:scroll; 
-    position:relative;
-    height: 600px;
+.informer-page {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+    overflow: hidden;
     font-family: 'Droid Serif', serif;
     color: #2f2f2f;
     background-color: #f9f7f1;
-
-    
+	padding: 5px 20px 10px 20px;
 }
 
-
-
-h2{
+.informer-title {
     text-align: center;
     text-transform: uppercase;
-
+	font-family: 'Playfair Display', serif;
+	font-weight: 500;
+	font-size: 25px;
+	margin: 15px 0;
 }
 
-p{
-    text-align: justify;
-    text-justify: inter-word;
-    padding-left: 5px;
-    padding-right: 5px;
+.informer-article {
+	width: 100%;
+}
+
+.article-image, .article-image img, .article-image label {
+	width: 100%;
+}
+
+.article-image label {
+	text-align: center;
+	font-family: 'Droid Serif', serif;
+	font-size: 8px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.article-column {
+	height: 100%;
+	width: 49%;
+	display: inline-block;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.text {
+	text-align: justify;
+	font-family: 'Droid Serif', serif;
+	font-size: 11px;
+}
+
+p {
+	margin: 5px;
 }
 
 img{
-    width: 500px;
+    width: 100%;
 }
-
-#footer{
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 
 .zoomable {
 	cursor: zoom-in;
+}
+
+.gradient {
+	z-index: 100;
+	pointer-events: none;
 }

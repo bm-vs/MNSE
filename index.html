@@ -5,10 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./styles/styles.css">
-
-	<title>O Informador</title>
-	
-	
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<title>The Informer</title>
 	
 	<!-- Magazine -->
 	<script type="text/javascript" src="./lib/jquery.min.1.7.js"></script>
@@ -73,8 +71,6 @@ $(document).on('click', function(e) {
 	}
 });
 
-// Page flip events
-
 // Load magazine
 function loadApp() {
  	$('#canvas').fadeIn(1000);
@@ -107,7 +103,10 @@ function loadApp() {
 				// Play page flip sound
 				var page_flip_sound = new Audio('./audio/page-flip-sound.wav');
 				page_flip_sound.volume = 0.2;
-				page_flip_sound.play();
+				page_flip_sound.play();	
+		
+				// Pause tts on page change
+				$('.chat-tts').trigger('pause');
 		
 				// Update the current URI
 				Hash.go('page/' + page).update();

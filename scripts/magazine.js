@@ -17,20 +17,7 @@ function addPage(page, book) {
 }
 
 function loadPage(page, pageElement) {
-	if (page === 1) {
-		
-	}
-	else if (page % 2 === 0) {
-		$(pageElement).load('./pages/page' + page + '.html');
-	}
-	else {
-		$(pageElement).load('./pages/chat.html', function() {
-			$(this).children('.chat-container').attr('ref', 'chat-id-' + page);
-			$(this).children('.chat-container').attr('page-left', page-1);
-			$(this).children('.chat-container').attr('page-right', page);
-			new Chat($(this).children('.chat-container'));
-		});
-	}
+	$(pageElement).load('./pages/page' + page + '.html');
 	pageElement.find('.loader').remove();
 }
 

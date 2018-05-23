@@ -100,7 +100,7 @@ Chat.prototype.displayMessage = function(key, name, text, picUrl, soundUrl) {
 		this.storage.refFromURL(soundUrl).getMetadata().then(function(metadata) {
 			
 			soundUrl = metadata.downloadURLs[0];
-			$(id).append('<audio autoplay="true" src="' + soundUrl + '">');
+			$(id).append('<audio class="chat-tts" autoplay="true" src="' + soundUrl + '">');
 			$(id).removeAttr('hidden');
 		}.bind(this));
 	}
