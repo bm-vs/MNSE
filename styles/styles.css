@@ -4,24 +4,35 @@
 	left: 0px;
 	bottom: 0px;
 	right: 0px;
-    overflow: hidden;
-    font-family: 'Droid Serif', serif;
-    color: #2f2f2f;
-    background-color: #f9f7f1;
+	overflow: hidden;
+	font-family: 'Droid Serif', serif;
+	color: #2f2f2f;
+	background-color: #f9f7f1;
 	padding: 5px 20px 10px 20px;
 }
 
 .informer-title {
-    text-align: center;
-    text-transform: uppercase;
+	text-align: center;
+	text-transform: uppercase;
 	font-family: 'Playfair Display', serif;
+	margin: 15px 0;
+}
+
+.title-main {
 	font-weight: 500;
 	font-size: 25px;
-	margin: 15px 0;
+}
+
+.title-secondary {
+	font-weight: 500;
+	font-size: 18px;
 }
 
 .informer-article {
 	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
 }
 
 .article-image, .article-image img, .article-image label {
@@ -34,20 +45,17 @@
 	font-size: 8px;
 	display: block;
 	margin-bottom: 10px;
+	font-style: italic;
 }
 
 .article-column {
-	height: 100%;
 	width: 49%;
 	display: inline-block;
 }
 
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
+.page-column {
+	width: 47%;
+	display: inline-block;
 }
 
 .text {
@@ -61,7 +69,7 @@ p {
 }
 
 img{
-    width: 100%;
+	width: 100%;
 }
 
 .zoomable {
@@ -72,3 +80,71 @@ img{
 	z-index: 100;
 	pointer-events: none;
 }
+
+.chat-container {
+	display: block;
+	margin-bottom: 7px;
+}
+
+.message-form {
+	display: flex;
+	margin-bottom: 25px;
+}
+
+.message-form textarea {
+	color: #2f2f2f;
+	background-color: #f9f7f1;
+	border: 0;
+	border-bottom: 1px solid transparent;
+	width: 100%;
+	resize: none;
+	overflow: hidden;
+	padding: 0;
+	flex: 1;
+	height: 18px;
+	margin: 6px 0;
+}
+
+.message-form textarea:focus {
+	outline: 0;
+	border-bottom: 1px solid black;
+}
+
+.message-form button {
+	background: none;
+	margin-left: 10px;
+	border: 1px solid black;
+	width: 31px;
+}
+
+.message-form button[disabled] {
+	border: 1px solid transparent;
+}
+
+.message-form button {
+	outline: 0;
+}
+
+.message-container {
+	margin-bottom: 10px;
+}
+
+.message-container .name {
+	font-size: 9px;
+	font-weight: bold;
+}
+
+.message-container .name:before {
+	content: ' - ';
+}
+
+.vertical-separator {
+	border-left: 1px solid black;
+	margin: 30px 0;
+}
+
+.horizontal-separator {
+	border-top: 1px solid black;
+	margin: 20px 30%;
+}
+
