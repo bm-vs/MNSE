@@ -23,6 +23,7 @@ function Chat(container) {
 	$(this.signInButton).on('click', this.signIn.bind(this));
 	$(this.signOutButton).on('click', this.signOut.bind(this));
 	$(this.messageForm).on('submit', this.saveMessage.bind(this));
+	console.log($(this.messageInput));
 	$(this.messageInput).on('keyup', this.toggleButton.bind(this));
 	$(this.messageInput).on('change', this.toggleButton.bind(this));
 	this.initFirebase();
@@ -95,14 +96,15 @@ Chat.prototype.displayMessage = function(key, name, text, picUrl, soundUrl) {
 				'<div class="name">' + name + '</div>' +
 			'</div>'
 		);
+		$(this.messageList).animate({scrollTop: $(this.messageList)[0].scrollHeight}, 1000);
 	}
 	else if (url[url.length-1] == this.pageLeft || url[url.length-1] == this.pageRight) {
 		this.storage.refFromURL(soundUrl).getMetadata().then(function(metadata) {
-			
 			soundUrl = metadata.downloadURLs[0];
 			$(id).append('<audio class="chat-tts" autoplay="true" src="' + soundUrl + '">');
 			$(id).removeAttr('hidden');
 		}.bind(this));
+		$(this.messageList).animate({scrollTop: $(this.messageList)[0].scrollHeight}, 1000);
 	}
 };
 

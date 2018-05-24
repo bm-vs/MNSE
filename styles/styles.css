@@ -101,8 +101,12 @@ p {
 	margin: 5px;
 }
 
-img{
+img, video{
 	width: 100%;
+}
+
+video {
+	margin-bottom: 15px;
 }
 
 .zoomable {
@@ -156,6 +160,11 @@ img{
 
 .message-form button {
 	outline: 0;
+}
+
+.message-list {
+	overflow: hidden;
+	max-height: 370px;
 }
 
 .message-container {

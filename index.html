@@ -110,6 +110,7 @@ function loadApp() {
 		
 				// Pause tts on page change
 				$('.chat-tts').trigger('pause');
+				$('video').trigger('pause');
 		
 				// Update the current URI
 				Hash.go('page/' + page).update();
