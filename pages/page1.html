@@ -1,7 +1,11 @@
 <div class="gradient zoomable"></div>
 <div class="informer-page cover">
 	<h1 class="informer-title title">The Informer</h1>
-	<div class="edition">Porto, PT - Friday May 25, 2018 - Eight pages</div>
+	<div class="edition">
+	<span></span>
+	<span>Porto, PT - Friday May 25, 2018 - Eight pages</span>
+	<span class="sound-controller"><i class="fa fa-volume-up"></i></span>
+	</div>
 	<div class="article-image">
 		<h2 class="informer-title title-main" style="margin: 0">Arsenal announce Unai Emery</h2>
 		<a href="#page/2"><img src="./pics/emery-cover.jpg"></a>
@@ -17,3 +21,18 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function() {
+	$(document).on('click', '.sound-controller i', function() {
+		$(this).toggleClass('fa-volume-up');
+		$(this).toggleClass('fa-volume-off');
+		
+		if ($(this).hasClass('fa-volume-up')) {
+			background_audio.volume = 0.05;
+		}
+		else {
+			background_audio.volume = 0;
+		}
+	});
+});
+</script>

@@ -48,3 +48,65 @@
 
 [debug] [2018-05-23T20:28:21.867Z] Parsing function triggers
 [info] +  functions: tts: http://localhost:5001/theinformer-mnse/us-central1/tts
+[debug] [2018-05-24T04:22:33.439Z] Error: write after end
+    at write_ (_http_outgoing.js:622:15)
+    at ServerResponse.write (_http_outgoing.js:617:10)
+    at ReadStream.ondata (_stream_readable.js:639:20)
+    at emitOne (events.js:116:13)
+    at ReadStream.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at ReadStream.Readable.push (_stream_readable.js:208:10)
+    at fs.read (fs.js:2058:12)
+    at FSReqWrap.wrapper [as oncomplete] (fs.js:658:17)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-05-24T04:23:57.567Z] ----------------------------------------------------------------------
+[debug] [2018-05-24T04:23:57.570Z] Command:       D:\Program Files\nodejs\node.exe C:\Users\Bruno\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-05-24T04:23:57.570Z] CLI Version:   3.18.5
+[debug] [2018-05-24T04:23:57.570Z] Platform:      win32
+[debug] [2018-05-24T04:23:57.570Z] Node Version:  v8.11.2
+[debug] [2018-05-24T04:23:57.570Z] Time:          Thu May 24 2018 05:23:57 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:23:57.571Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-24T04:23:57.579Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-24T04:23:57.579Z] > authorizing via signed-in user
+[debug] [2018-05-24T04:23:57.581Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-05-24T04:23:57.582Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/vA5kL9sdYF2ningriJk_RFG5ovgwpdvFXpd3EsGa14g',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu May 24 2018 05:23:57 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:23:57.751Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-24T04:23:57.755Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/theinformer-mnse  
+  
+ Thu May 24 2018 05:23:57 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:23:58.524Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-24T04:23:58.525Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/theinformer-mnse/tokens  
+  
+ Thu May 24 2018 05:23:58 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:23:59.169Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-24T04:23:59.170Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/theinformer-mnse  
+  
+ Thu May 24 2018 05:23:59 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:24:00.031Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\feup\MNSE\project'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-05-24T04:24:00.591Z] Fetching environment
+[debug] [2018-05-24T04:24:00.593Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/28098850877:getServerAppConfig  
+  
+ Thu May 24 2018 05:24:00 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:24:00.593Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/28098850877/clients/_:getWebAppConfig  
+  
+ Thu May 24 2018 05:24:00 GMT+0100 (Hora de Verão de GMT)
+[debug] [2018-05-24T04:24:01.117Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-24T04:24:01.118Z] Starting @google-cloud/functions-emulator
+[debug] [2018-05-24T04:24:01.182Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-05-24T04:24:02.660Z] Parsing function triggers
