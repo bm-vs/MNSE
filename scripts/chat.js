@@ -23,7 +23,6 @@ function Chat(container) {
 	$(this.signInButton).on('click', this.signIn.bind(this));
 	$(this.signOutButton).on('click', this.signOut.bind(this));
 	$(this.messageForm).on('submit', this.saveMessage.bind(this));
-	console.log($(this.messageInput));
 	$(this.messageInput).on('keyup', this.toggleButton.bind(this));
 	$(this.messageInput).on('change', this.toggleButton.bind(this));
 	this.initFirebase();

@@ -1,3 +1,23 @@
+.title {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Playfair Display', serif;
+	margin: 10px 0;
+	font-weight: 900;
+	font-size: 45px;
+}
+
+.edition {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Droid Serif', serif;
+	font-size: 8px;
+	padding: 8px;
+	margin: 10px 0;
+}
+
 .topic-even {
 	position: absolute;
 	top: 10px;
@@ -180,13 +200,4 @@ video {
 	content: ' - ';
 }
 
-.vertical-separator {
-	border-left: 1px solid black;
-	margin: 30px 0;
-}
-
-.horizontal-separator {
-	border-top: 1px solid black;
-	margin: 15px 30%;
-}
 
