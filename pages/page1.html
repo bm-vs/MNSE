@@ -4,7 +4,7 @@
 	<div class="edition">
 	<span></span>
 	<span>Porto, PT - Friday May 25, 2018 - Eight pages</span>
-	<span class="sound-controller"><i class="fa fa-volume-up"></i></span>
+	<span class="sound-controller"><i class="fa fa-volume-off"></i></span>
 	</div>
 	<div class="article-image">
 		<h2 class="informer-title title-main" style="margin: 0">Arsenal announce Unai Emery</h2>
@@ -28,10 +28,10 @@ $(document).ready(function() {
 		$(this).toggleClass('fa-volume-off');
 		
 		if ($(this).hasClass('fa-volume-up')) {
-			background_audio.volume = 0.05;
+			background_audio.play();
 		}
 		else {
-			background_audio.volume = 0;
+			background_audio.pause();
 		}
 	});
 });

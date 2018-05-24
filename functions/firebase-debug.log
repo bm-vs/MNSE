@@ -110,3 +110,4 @@
 [info] +  hosting: Local server: http://localhost:5000
 
 [debug] [2018-05-24T04:24:02.660Z] Parsing function triggers
+[info] +  functions: tts: http://localhost:5001/theinformer-mnse/us-central1/tts
