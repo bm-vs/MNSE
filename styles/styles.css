@@ -1,3 +1,36 @@
+.topic-even {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 50;
+	text-decoration: overline;
+}
+
+.topic-odd {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 50;
+	text-decoration: overline;
+}
+
+.page-number-even {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	z-index: 50;
+	text-decoration: underline;
+}
+
+.page-number-odd {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 50;
+	text-decoration: underline;
+}
+
+
 .informer-page {
 	position: absolute;
 	top: 0px;
@@ -8,7 +41,7 @@
 	font-family: 'Droid Serif', serif;
 	color: #2f2f2f;
 	background-color: #f9f7f1;
-	padding: 5px 20px 10px 20px;
+	padding: 15px 25px 10px 25px;
 }
 
 .informer-title {
@@ -145,6 +178,6 @@ img{
 
 .horizontal-separator {
 	border-top: 1px solid black;
-	margin: 20px 30%;
+	margin: 15px 30%;
 }
 
